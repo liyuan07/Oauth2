@@ -1,18 +1,14 @@
 package org.example.backend.pojo;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-
+@AllArgsConstructor
 public class User {
-    public Integer id;
-    public String username;
-    public String password;
-
-    public User(Integer id, String username, String password) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-    }
+    private Integer id;
+    private String username;
+    private String password;
 }
