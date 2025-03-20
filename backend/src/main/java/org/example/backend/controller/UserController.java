@@ -38,15 +38,4 @@ public class UserController {
         userMapper.deleteById(userId);
         return "success";
     }
-    @PostMapping("/test")
-    public String test() {
-        logger.info("test");
-        return "success";
-    }
-
-    @GetMapping("/test2")
-    public String test2() {
-        logger.info("test2");
-        return "success2";
-    }
 }
