@@ -46,7 +46,7 @@ public class SecurityConfig {
         };
     }
 
-    /// 这里不注入也可以，spring security会自动注入这个组件。
+    /// 在通过jwt token获得用户信息的时候需要使用authenticationManager，或者context信息，所以需要显示注入
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
@@ -62,7 +62,7 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> authorize
                         /// 允许所有用户访问 /user/account/token/ 和 /user/account/register/ 这两个路径，通常用于用户登录和注册接口。
-                        .requestMatchers("/user/account/token", "/user/account/register").permitAll()
+                        .requestMatchers("/user/account/token", "/user/account/register","/testjson" , "/testxxx","/user/{userId}").permitAll()
                         /// 限制只有特定 IP 地址（在 hasIpAddress 方法中定义）的请求才能访问 /pk/start/game 和 /pk/receive/bot/move 路径
                         // .requestMatchers("/pk/start/game", "/pk/receive/bot/move").access(hasIpAddress())
                         /// 允许所有用户发送 OPTIONS 请求。OPTIONS 请求通常用于获取服务器支持的请求方法和头部信息，在跨域请求中经常会用到

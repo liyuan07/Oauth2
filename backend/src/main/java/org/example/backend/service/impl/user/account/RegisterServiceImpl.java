@@ -21,7 +21,7 @@ public class RegisterServiceImpl implements RegisterService {
     private PasswordEncoder passwordEncoder;
 
     @Override
-    public Map<String, String> register(String username, String password, String confirmedPassword) {
+    public Map<String, String> register(String username, String password) {
         HashMap<String, String> map = new HashMap<>();
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("username", username);
@@ -33,35 +33,14 @@ public class RegisterServiceImpl implements RegisterService {
             map.put("error_message", "用户名不能为空");
             return map;
         }
-
-        if (password == null || confirmedPassword == null) {
-            map.put("error_message", "密码不能为空");
-            return map;
-        }
         //删除首尾的空白字符
         username = username.trim();
         if (username.length() == 0) {
             map.put("error_message", "用户名不能为空");
             return map;
         }
-
-        if (password.length() == 0 || confirmedPassword.length() == 0) {
-            map.put("error_message", "密码不能为空");
-            return map;
-        }
-
         if (username.length() > 100) {
             map.put("error_message", "用户名长度不能大于100");
-            return map;
-        }
-
-        if (password.length() > 100 || confirmedPassword.length() > 100) {
-            map.put("error_message", "密码不能大于100");
-            return map;
-        }
-
-        if (!password.equals(confirmedPassword)) {
-            map.put("error_message", "两次输入的密码不一致");
             return map;
         }
         String photo = "https://cdn.acwing.com/media/user/profile/photo/112756_lg_ec110e5ef6.jpg";
