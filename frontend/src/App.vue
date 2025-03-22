@@ -1,7 +1,7 @@
 <template>
-  <!-- <NavBar></NavBar>
-  <router-view/> -->
-  <div>hello world</div>
+  <router-link to="/user/account/register">注册</router-link>
+  <router-link to="/user/account/login">登录</router-link>
+  <router-view/>
 </template>
 
 <script setup lang="ts">

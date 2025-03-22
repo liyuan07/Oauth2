@@ -1,7 +1,5 @@
 <template>
-  <ContentFile>
-    这是注册界面
-  </ContentFile>
+  <div>welcome to home</div>
 </template>
 
 <script setup lang="ts">

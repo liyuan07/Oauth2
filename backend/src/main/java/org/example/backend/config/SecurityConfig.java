@@ -61,8 +61,8 @@ public class SecurityConfig {
                 /// 会话创建策略设置为无状态（STATELESS）。在无状态的会话管理中，Spring Security 不会创建或使用 HTTP 会话来存储用户的认证信息，适用于基于令牌（如 JWT）的认证方式。
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> authorize
-                        /// 允许所有用户访问 /user/account/token/ 和 /user/account/register/ 这两个路径，通常用于用户登录和注册接口。
-                        .requestMatchers("/user/account/token", "/user/account/register","/testjson" , "/testxxx","/user/{userId}").permitAll()
+                        /// 允许所有用户访问 /user/account/login 和 /user/account/register 这两个路径，通常用于用户登录和注册接口。
+                        .requestMatchers("/user/account/login", "/user/account/register","/testjson" , "/testxxx","/user/{userId}").permitAll()
                         /// 限制只有特定 IP 地址（在 hasIpAddress 方法中定义）的请求才能访问 /pk/start/game 和 /pk/receive/bot/move 路径
                         // .requestMatchers("/pk/start/game", "/pk/receive/bot/move").access(hasIpAddress())
                         /// 允许所有用户发送 OPTIONS 请求。OPTIONS 请求通常用于获取服务器支持的请求方法和头部信息，在跨域请求中经常会用到
